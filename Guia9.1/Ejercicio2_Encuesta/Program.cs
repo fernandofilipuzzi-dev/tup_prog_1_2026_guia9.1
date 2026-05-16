@@ -92,11 +92,14 @@ namespace Ejercicio2_Encuesta
 
         static void Main(string[] args)
         {
-            int op = MostrarPantallaSolicitarOpcionMenu();
-
+            int op;
             #region iterar cada persona encuestada
-            while (op != -1)
+            do
             {
+                #region solicitar opción menu
+                op = MostrarPantallaSolicitarOpcionMenu();
+                #endregion
+
                 #region iterar opciones menú
                 switch (op)
                 {
@@ -118,12 +121,12 @@ namespace Ejercicio2_Encuesta
                 }
                 #endregion
 
-                #region solicitar opción menu
-                if (op!=-1)
-                    op = MostrarPantallaSolicitarOpcionMenu();
-                #endregion
-            }
+                
+            } while (op != -1) ;
             #endregion
+
+            Console.WriteLine("Presione una tecla para finalizar el programa.");
+            Console.ReadKey();
         }
     }
 }

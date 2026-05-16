@@ -1,46 +1,48 @@
 ﻿using Ejercicio3_Control_acceso.Models;
 
-namespace Ejercicio3_Control_acceso
+namespace Ejercicio3_Control_acceso;
+
+internal class Program
 {
-    internal class Program
+    static Servicio servicio = new Servicio();
+
+    #region metodos
+    public static int MostrarPantallaSolicitarOpcion()
     {
-        static Servicio servicio = new Servicio();
+        Console.WriteLine("Control de acceso \n\n");
+        Console.WriteLine("1- Verificar Acceso");
+        Console.WriteLine("2- Imprimir Recaudacion");
+        Console.WriteLine("");
+        int op=Convert.ToInt32(Console.ReadLine());
+        return op;
+    }
 
-        #region metodos
-        public static int MostrarPantallaSolicitarOpcion()
+    public static void MostrarPantallaRegistrarAcceso()
+    {
+        Console.WriteLine("Control de acceso \n\n");
+        int esValido = Convert.ToInt32(Console.ReadLine());
+        servicio.RegistrarAcceso(esValido==1,3,3,3);
+    }
+    #endregion
+
+    static void Main(string[] args)
+    {
+        int op;
+
+        do
         {
-            Console.WriteLine("Control de acceso \n\n");
-            Console.WriteLine("1- Verificar Acceso");
-            Console.WriteLine("2- Imprimir Recaudacion");
-            Console.WriteLine("");
-            int op=Convert.ToInt32(Console.ReadLine());
-            return op;
-        }
+            op = MostrarPantallaSolicitarOpcion();
 
-        public static void MostrarPantallaRegistrarAcceso()
-        {
-            Console.WriteLine("Control de acceso \n\n");
-            int esValido = Convert.ToInt32(Console.ReadLine());
-            servicio.RegistrarAcceso(esValido==1,3,3,3);
-        }
-        #endregion
-
-        static void Main(string[] args)
-        {
-            int op = MostrarPantallaSolicitarOpcion();
-
-            while(op!=-1) 
+            switch (op)
             {
-                switch(op)
-                {
-                    case 1:
-                        MostrarPantallaRegistrarAcceso();
-                        break;
-                }
-
-                op = MostrarPantallaSolicitarOpcion();
+                case 1:
+                    MostrarPantallaRegistrarAcceso();
+                    break;
             }
-            
         }
+        while (op != -1);
+
+        Console.WriteLine("Presione una tecla para finalizar el programa.");
+        Console.ReadKey();
     }
 }

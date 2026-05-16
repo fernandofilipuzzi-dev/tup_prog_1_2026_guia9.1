@@ -123,11 +123,16 @@ namespace Ejercicio1_sin_clase
         {
             MostrarPantallaIniciarVariables();
 
-            int op = MostrarPantallaSolicitarOpcionMenu();
+            int op;
 
             #region iterar opciones menú
-            while (op != -1)
+            do
             {
+
+                #region solicitar opción
+                op = MostrarPantallaSolicitarOpcionMenu();
+                #endregion
+
                 #region verificar opción
                 switch (op)
                 {
@@ -156,12 +161,11 @@ namespace Ejercicio1_sin_clase
                 }
                 #endregion
 
-                #region solicitar opción
-                if (op!=-1)
-                    op = MostrarPantallaSolicitarOpcionMenu();
-                #endregion
-            }
+            } while (op != -1);
             #endregion
+
+            Console.WriteLine("Presione una tecla para finalizar el programa.");
+            Console.ReadKey();
         }
     }
 }

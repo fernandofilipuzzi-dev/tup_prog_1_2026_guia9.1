@@ -51,7 +51,8 @@ namespace Ejercicio1
                 Console.WriteLine("promedio: "+promedio);
             #endregion
 
-            Console.ReadKey();            
+            Console.WriteLine("Presione una tecla para finalizar el programa.");
+            Console.ReadKey();
         }
     }
 }
